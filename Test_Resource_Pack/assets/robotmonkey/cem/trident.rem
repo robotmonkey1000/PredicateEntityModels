@@ -1,0 +1,9 @@
+{
+    "Conditions": [
+            {
+                "name":"CustomModelData",
+                "value":"1000",
+                "model":"nova/simple.json"
+            }
+        ]
+}

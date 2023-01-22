@@ -1,0 +1,49 @@
+{
+    "texture":"item/mjolnir.png",
+    "root": {
+        "name":"root",
+        "cuboids": [
+            {
+                "UV": {
+                    "X": 0,
+                    "Y": 0
+                },
+                "size": {
+                    "sizeX": 2,
+                    "sizeY": 2,
+                    "sizeZ": 2
+                },
+                "offset": {
+                    "offsetX": -1,
+                    "offsetY": -2,
+                    "offsetZ": -1
+                }
+            }
+        ],
+        "children":
+        [
+            {
+                "name":"TestGroup",
+                "cuboids": [
+                    {
+                        "UV": {
+                            "X": 0,
+                            "Y": 0
+                        },
+                        "size": {
+                            "sizeX": 2,
+                            "sizeY": 2,
+                            "sizeZ": 2
+                        },
+                        "offset": {
+                            "offsetX": -1,
+                            "offsetY": -13,
+                            "offsetZ": -1
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+
+}
