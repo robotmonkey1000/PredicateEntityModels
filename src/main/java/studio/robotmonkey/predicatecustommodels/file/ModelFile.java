@@ -64,7 +64,9 @@ public class ModelFile {
         ModelPartData rootpart = modelData.getRoot();
         ModelPartBuilder builder = ModelPartBuilder.create();
         GatherChildenModels(textureModel.root, rootpart);
-        ModelPart model = TexturedModelData.of(modelData, 16, 16).createModel();
+
+        //TODO ADD TEXTURE SIZE AS PART OF THE MODEL INFORMATION
+        ModelPart model = TexturedModelData.of(modelData, 64, 64).createModel();
         texturedModelData.put(condition, new ModelsWithTexture(model, new Identifier("minecraft", "textures/" + textureModel.texture)));
         return model;
     }
@@ -87,7 +89,7 @@ public class ModelFile {
 
         }
 
-        ModelPartData current = parent.addChild(group.name, builder, ModelTransform.NONE);
+        ModelPartData current = parent.addChild(group.name, builder, ModelTransform.pivot(group.pivot.pivotX, group.pivot.pivotY, group.pivot.pivotZ));
         if(group.children != null)
         {
             for(TextureModelDataLoader.ModelGroup child : group.children){

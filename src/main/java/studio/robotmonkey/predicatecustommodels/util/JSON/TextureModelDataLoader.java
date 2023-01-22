@@ -28,10 +28,16 @@ public class TextureModelDataLoader {
 
     public class ModelGroup {
         @Expose public String name;
+        @Expose public ModelPivot pivot;
 
         @Expose public List<ModelGroup> children;
 
         @Expose public List<ModelCuboid> cuboids;
+    }
+    public class ModelPivot {
+        @Expose public float pivotX;
+        @Expose public float pivotY;
+        @Expose public float pivotZ;
     }
 
     public class ModelCuboid {

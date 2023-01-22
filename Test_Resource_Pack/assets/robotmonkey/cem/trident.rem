@@ -3,7 +3,7 @@
             {
                 "name":"CustomModelData",
                 "value":"1000",
-                "model":"nova/simple.json"
+                "model":"test/mjolnir2.json"
             }
         ]
 }

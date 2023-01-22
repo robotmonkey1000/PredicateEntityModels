@@ -1,0 +1,122 @@
+{
+  "texture":"item/mjolnir2.png",
+  "root": {
+    "name":"root",
+    "pivot": {
+      "pivotX": 0,
+      "pivotY": 0,
+      "pivotZ": 0
+    },
+    "cuboids": [],
+    "children":
+    [
+      {
+        "name":"Body",
+        "pivot": {
+          "pivotX": 0,
+          "pivotY": 12,
+          "pivotZ": 0
+        },
+        "cuboids": [
+          {
+            "UV": {
+              "X": 0,
+              "Y": 22
+            },
+            "size": {
+              "sizeX": 2,
+              "sizeY": 12,
+              "sizeZ": 2
+            },
+            "offset": {
+              "offsetX": -1,
+              "offsetY": -10,
+              "offsetZ": -1
+            }
+          },
+          {
+            "UV": {
+              "X": 0,
+              "Y": 0
+            },
+            "size": {
+              "sizeX": 12,
+              "sizeY": 6,
+              "sizeZ": 6
+            },
+            "offset": {
+              "offsetX": -6,
+              "offsetY": -16,
+              "offsetZ": -3
+            }
+          },
+          {
+            "UV": {
+              "X": 12,
+              "Y": 12
+            },
+            "size": {
+              "sizeX": 1,
+              "sizeY": 5,
+              "sizeZ": 5
+            },
+            "offset": {
+              "offsetX": -7,
+              "offsetY": -15.5,
+              "offsetZ": -2.5
+            }
+          },
+          {
+            "UV": {
+              "X": 0,
+              "Y": 12
+            },
+            "size": {
+              "sizeX": 1,
+              "sizeY": 5,
+              "sizeZ": 5
+            },
+            "offset": {
+              "offsetX": 6,
+              "offsetY": -15.5,
+              "offsetZ": -2.5
+            }
+          },
+          {
+            "UV": {
+              "X": 21,
+              "Y": 19
+            },
+            "size": {
+              "sizeX": 3,
+              "sizeY": 1,
+              "sizeZ": 3
+            },
+            "offset": {
+              "offsetX": -1.5,
+              "offsetY": 2,
+              "offsetZ": -1.5
+            }
+          },
+          {
+            "UV": {
+              "X": 19,
+              "Y": 12
+            },
+            "size": {
+              "sizeX": 4,
+              "sizeY": 1,
+              "sizeZ": 4
+            },
+            "offset": {
+              "offsetX": -2,
+              "offsetY": -16.5,
+              "offsetZ": -2
+            }
+          }
+        ]
+      }
+    ]
+  }
+
+}

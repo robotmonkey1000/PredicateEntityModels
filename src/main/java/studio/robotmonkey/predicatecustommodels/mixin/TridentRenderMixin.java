@@ -28,17 +28,22 @@ public class TridentRenderMixin extends EntityRenderer<TridentEntity> {
         super(ctx);
     }
 
+    //NOTE THIS IS FOR RENDERING IN WORLD
     @Inject(method="Lnet/minecraft/client/render/entity/TridentEntityRenderer;render(Lnet/minecraft/entity/projectile/TridentEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At("HEAD"), cancellable = true)
     public void render(TridentEntity tridentEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci)
     {
-        matrixStack.push();
-        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(g, tridentEntity.prevYaw, tridentEntity.getYaw()) - 90.0F));
-        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, tridentEntity.prevPitch, tridentEntity.getPitch()) + 90.0F));
-        VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, ModelRegistryManager.GetModelFromIndex(EntityType.TRIDENT, 0).getLayer( ModelRegistryManager.GetTextureFromIndex(EntityType.TRIDENT, 0)), false, tridentEntity.isEnchanted());
-        ModelRegistryManager.GetModelFromIndex(EntityType.TRIDENT, 0).render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
-        matrixStack.pop();
-        super.render(tridentEntity, f, g, matrixStack, vertexConsumerProvider, i);
-        ci.cancel();
+        if(ModelRegistryManager.GetModelFromIndex(EntityType.TRIDENT, 0) != null)
+        {
+            matrixStack.push();
+            //TODO FIGURE OUT MODEL SHIFT
+            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(g, tridentEntity.prevYaw, tridentEntity.getYaw()) - 90.0F));
+            matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, tridentEntity.prevPitch, tridentEntity.getPitch()) + 90.0F));
+            VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, ModelRegistryManager.GetModelFromIndex(EntityType.TRIDENT, 0).getLayer( ModelRegistryManager.GetTextureFromIndex(EntityType.TRIDENT, 0)), false, tridentEntity.isEnchanted());
+            ModelRegistryManager.GetModelFromIndex(EntityType.TRIDENT, 0).render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+            matrixStack.pop();
+            super.render(tridentEntity, f, g, matrixStack, vertexConsumerProvider, i);
+            ci.cancel();
+        }
     }
 
     @Override
