@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "studio.robotmonkey.predicatecustommodels.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "BuiltinModelItemRendererMixin",
+    "EntityModelLoaderMixin",
+    "TridentEntityModelMixin",
+    "TridentRenderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

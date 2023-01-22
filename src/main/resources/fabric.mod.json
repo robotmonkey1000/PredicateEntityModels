@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "predicatecustommodels",
+  "version": "${version}",
+  "name": "PredicateCustomModels",
+  "description": "Custom Entity Models based on Conditions",
+  "authors": [
+    "robotmonkey1000"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/PredicateCustomModels/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "studio.robotmonkey.predicatecustommodels.client.PredicateCustomModelsClient"
+    ],
+    "main": [
+      "studio.robotmonkey.predicatecustommodels.PredicateCustomModels"
+    ]
+  },
+  "mixins": [
+    "predicatecustommodels.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.13",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}
