@@ -1,118 +1,122 @@
 {
-	"texture_size": [32, 32],
-	"textures": {
-		"0": "item/mjolnir",
-		"particle": "item/mjolnir"
-	},
-	"elements": [
-		{
-			"from": [7, 1, 7],
-			"to": [9, 13, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.75, 8]},
-			"faces": {
-				"north": {"uv": [9, 5.5, 10, 11.5], "texture": "#0"},
-				"east": {"uv": [7.5, 9, 8.5, 15], "texture": "#0"},
-				"south": {"uv": [10, 5.5, 11, 11.5], "texture": "#0"},
-				"west": {"uv": [11, 5.5, 12, 11.5], "texture": "#0"},
-				"up": {"uv": [7, 12.5, 6, 11.5], "texture": "#0"},
-				"down": {"uv": [9.5, 11.5, 8.5, 12.5], "texture": "#0"}
-			}
-		},
-		{
-			"from": [2, 13, 5],
-			"to": [14, 19, 11],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.75, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 6, 3], "texture": "#0"},
-				"east": {"uv": [6, 3, 9, 6], "texture": "#0"},
-				"south": {"uv": [0, 3, 6, 6], "texture": "#0"},
-				"west": {"uv": [6, 6, 9, 9], "texture": "#0"},
-				"up": {"uv": [6, 9, 0, 6], "texture": "#0"},
-				"down": {"uv": [12, 0, 6, 3], "texture": "#0"}
-			}
-		},
-		{
-			"from": [14, 13.5, 5.5],
-			"to": [15, 18.5, 10.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.75, 8]},
-			"faces": {
-				"north": {"uv": [8.5, 9, 9, 11.5], "texture": "#0"},
-				"east": {"uv": [0, 9, 2.5, 11.5], "texture": "#0"},
-				"south": {"uv": [3, 11.5, 3.5, 14], "texture": "#0"},
-				"west": {"uv": [2.5, 9, 5, 11.5], "texture": "#0"},
-				"up": {"uv": [12, 5.5, 11.5, 3], "texture": "#0"},
-				"down": {"uv": [4, 11.5, 3.5, 14], "texture": "#0"}
-			}
-		},
-		{
-			"from": [1, 13.5, 5.5],
-			"to": [2, 18.5, 10.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.75, 8]},
-			"faces": {
-				"north": {"uv": [4, 11.5, 4.5, 14], "texture": "#0"},
-				"east": {"uv": [9, 3, 11.5, 5.5], "texture": "#0"},
-				"south": {"uv": [4.5, 11.5, 5, 14], "texture": "#0"},
-				"west": {"uv": [5, 9, 7.5, 11.5], "texture": "#0"},
-				"up": {"uv": [5.5, 14, 5, 11.5], "texture": "#0"},
-				"down": {"uv": [6, 11.5, 5.5, 14], "texture": "#0"}
-			}
-		},
-		{
-			"from": [6.75, 0, 6.75],
-			"to": [9.25, 1, 9.25],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.75, 8]},
-			"faces": {
-				"north": {"uv": [9.5, 11.5, 10.75, 12], "texture": "#0"},
-				"east": {"uv": [11, 11.5, 12.25, 12], "texture": "#0"},
-				"south": {"uv": [12, 0, 13.25, 0.5], "texture": "#0"},
-				"west": {"uv": [12, 0.5, 13.25, 1], "texture": "#0"},
-				"up": {"uv": [1.25, 12.75, 0, 11.5], "texture": "#0"},
-				"down": {"uv": [2.75, 11.5, 1.5, 12.75], "texture": "#0"}
-			}
-		},
-		{
-			"from": [6, 18.5, 6],
-			"to": [10, 19.5, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.75, 8]},
-			"faces": {
-				"north": {"uv": [12.25, 10, 14.25, 10.5], "texture": "#0"},
-				"east": {"uv": [12.25, 10.5, 14.25, 11], "texture": "#0"},
-				"south": {"uv": [12.25, 11, 14.25, 11.5], "texture": "#0"},
-				"west": {"uv": [12.25, 11.5, 14.25, 12], "texture": "#0"},
-				"up": {"uv": [12.25, 12, 14.25, 14], "texture": "#0"}
-			}
-		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [0, 90, 0]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [0, 90, 0]
-		},
-		"firstperson_righthand": {
-			"rotation": [0, 90, 0]
-		},
-		"firstperson_lefthand": {
-			"rotation": [0, 90, 0]
-		},
-		"ground": {
-			"rotation": [0, 0, -180],
-			"translation": [0, 11, 0]
-		},
-		"gui": {
-			"translation": [0, -1.25, 0]
-		},
-		"fixed": {
-			"translation": [0, -1.75, 0]
-		}
-	},
-	"groups": [
-		{
-			"name": "body",
-			"origin": [0, 0, 0],
-			"color": 0,
-			"children": [0, 1, 2, 3, 4, 5]
-		}
-	]
+  "texture":"item/mjolnir.png",
+  "root": {
+    "name":"root",
+    "pivot": {
+      "pivotX": 0,
+      "pivotY": 0,
+      "pivotZ": 0
+    },
+    "cuboids": [],
+    "children":
+    [
+      {
+        "name":"Body",
+        "pivot": {
+          "pivotX": 0,
+          "pivotY": 12,
+          "pivotZ": 0
+        },
+        "cuboids": [
+          {
+            "UV": {
+              "X": 0,
+              "Y": 22
+            },
+            "size": {
+              "sizeX": 2,
+              "sizeY": 12,
+              "sizeZ": 2
+            },
+            "offset": {
+              "offsetX": -1,
+              "offsetY": -10,
+              "offsetZ": -1
+            }
+          },
+          {
+            "UV": {
+              "X": 0,
+              "Y": 0
+            },
+            "size": {
+              "sizeX": 12,
+              "sizeY": 6,
+              "sizeZ": 6
+            },
+            "offset": {
+              "offsetX": -6,
+              "offsetY": -16,
+              "offsetZ": -3
+            }
+          },
+          {
+            "UV": {
+              "X": 12,
+              "Y": 12
+            },
+            "size": {
+              "sizeX": 1,
+              "sizeY": 5,
+              "sizeZ": 5
+            },
+            "offset": {
+              "offsetX": -7,
+              "offsetY": -15.5,
+              "offsetZ": -2.5
+            }
+          },
+          {
+            "UV": {
+              "X": 0,
+              "Y": 12
+            },
+            "size": {
+              "sizeX": 1,
+              "sizeY": 5,
+              "sizeZ": 5
+            },
+            "offset": {
+              "offsetX": 6,
+              "offsetY": -15.5,
+              "offsetZ": -2.5
+            }
+          },
+          {
+            "UV": {
+              "X": 21,
+              "Y": 19
+            },
+            "size": {
+              "sizeX": 3,
+              "sizeY": 1,
+              "sizeZ": 3
+            },
+            "offset": {
+              "offsetX": -1.5,
+              "offsetY": 2,
+              "offsetZ": -1.5
+            }
+          },
+          {
+            "UV": {
+              "X": 19,
+              "Y": 12
+            },
+            "size": {
+              "sizeX": 4,
+              "sizeY": 1,
+              "sizeZ": 4
+            },
+            "offset": {
+              "offsetX": -2,
+              "offsetY": -16.5,
+              "offsetZ": -2
+            }
+          }
+        ]
+      }
+    ]
+  }
+
 }

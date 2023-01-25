@@ -1,9 +1,15 @@
 {
-    "Conditions": [
-            {
-                "name":"CustomModelData",
-                "value":"1000",
-                "model":"test/mjolnir2.json"
-            }
-        ]
+    "Conditions":
+    [
+        {
+            "name":"CustomModelData",
+            "value":"1000",
+            "model":"test/mjolnir.json"
+        },
+        {
+            "name":"Owner",
+            "value":"robotmonkey1000",
+            "model":"test/mjolnir.json"
+        }
+    ]
 }

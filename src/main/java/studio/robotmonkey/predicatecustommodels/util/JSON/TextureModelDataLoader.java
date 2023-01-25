@@ -20,7 +20,7 @@ public class TextureModelDataLoader {
 
     public class TextureModel {
         @Expose public String texture;
-
+        @Expose public int[] texturesize;
         @Expose public ModelGroup root;
 
 

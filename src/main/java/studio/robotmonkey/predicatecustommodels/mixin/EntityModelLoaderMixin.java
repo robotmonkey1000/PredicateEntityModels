@@ -6,6 +6,8 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -48,19 +50,30 @@ public abstract class EntityModelLoaderMixin{
             if(jsonModelFile == null){
                 throw new Exception("Invalid File");
             }
-            ModelFile file = new ModelFile(jsonModelFile, id, manager);
+            ModelFile file = new ModelFile(jsonModelFile, manager);
 
             String entityName = UtilManager.getEntityNameFromId(id);
             Optional<EntityType<?>> entityTypeOptional = EntityType.get(entityName);
 
             if(entityTypeOptional.isPresent()){
                 EntityType<? extends Entity> entityType = entityTypeOptional.get();
+
                 if(UtilManager.isUnsupported(entityType)){
                     throw new Exception("Entity \"" + EntityType.getId(entityType) + "\" is unsupported!");
                 }
 
                 UtilManager.getLogger().info("Adding Entity " + entityType);
                 ModelRegistryManager.addRegistry(entityType, file);
+            }
+            else if(!UtilManager.isUnsupported(entityName))
+            {
+                Item item = (Item)Registries.ITEM.get(new Identifier(entityName));
+                if(item != null)
+                {
+                    UtilManager.getLogger().info("Adding Other " + item.getName().getString());
+                    ModelRegistryManager.addOther(item, file);
+                }
+
             }
         } catch(Exception exception){
             UtilManager.getLogger().error(exception);

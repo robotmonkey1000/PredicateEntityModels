@@ -14,6 +14,11 @@ public class PredicateCustomModelsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         UtilManager.addSupport(EntityType.TRIDENT);
+        UtilManager.addSupport("diamond_helmet");
+        UtilManager.addSupport("netherite_helmet");
+        UtilManager.addSupport("iron_helmet");
+        UtilManager.addSupport("gold_helmet");
+
     }
 
 

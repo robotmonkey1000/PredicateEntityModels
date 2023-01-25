@@ -15,6 +15,7 @@ import java.util.Set;
 public class UtilManager {
 
     private static final Set<EntityType<? extends Entity>> supportedEntities      = new HashSet<>();
+    private static final Set<String> supportedOthers      = new HashSet<>();
     private static final Logger LOGGER = LogManager.getLogger("Robots Custom Models");
     private static final Gson GSON = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 
@@ -28,8 +29,16 @@ public class UtilManager {
         return supportedEntities.add(entityType);
     }
 
+    public static boolean addSupport(String id){
+        return supportedOthers.add(id);
+    }
+
     public static boolean isUnsupported(EntityType<? extends Entity> entityType){
         return !supportedEntities.contains(entityType);
+    }
+
+    public static boolean isUnsupported(String id){
+        return !supportedOthers.contains(id);
     }
 
 

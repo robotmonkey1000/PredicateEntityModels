@@ -22,11 +22,9 @@ public class ModelFile {
     //private final Float shadowsize;
     private final ArrayList<TextureModelDataLoader.TextureModel> textureModels;
     private final HashMap<Condition, ModelsWithTexture> texturedModelData;
-    private final Identifier  path;
 
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public ModelFile(JSONModelFile modelFile, Identifier path, ResourceManager resourceManager) throws Exception{
-        this.path = path;
+    public ModelFile(JSONModelFile modelFile, ResourceManager resourceManager) throws Exception{
 
         this.textureModels = new ArrayList<TextureModelDataLoader.TextureModel>();
         this.texturedModelData = new HashMap<>();
@@ -66,7 +64,7 @@ public class ModelFile {
         GatherChildenModels(textureModel.root, rootpart);
 
         //TODO ADD TEXTURE SIZE AS PART OF THE MODEL INFORMATION
-        ModelPart model = TexturedModelData.of(modelData, 64, 64).createModel();
+        ModelPart model = TexturedModelData.of(modelData, textureModel.texturesize[0], textureModel.texturesize[1]).createModel();
         texturedModelData.put(condition, new ModelsWithTexture(model, new Identifier("minecraft", "textures/" + textureModel.texture)));
         return model;
     }

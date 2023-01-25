@@ -3,15 +3,20 @@ package studio.robotmonkey.predicatecustommodels.mixin;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
+import net.minecraft.client.render.entity.model.EntityModelLoader;
+import net.minecraft.client.render.entity.model.ShieldEntityModel;
 import net.minecraft.client.render.entity.model.TridentEntityModel;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.render.model.ModelLoader;
 import net.minecraft.client.render.model.json.ModelTransformation;
+import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,21 +24,38 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import studio.robotmonkey.predicatecustommodels.util.ModelRegistryManager;
+import studio.robotmonkey.predicatecustommodels.util.ModelsWithTexture;
 
 @Mixin(BuiltinModelItemRenderer.class)
 public class BuiltinModelItemRendererMixin {
     @Shadow
     private TridentEntityModel modelTrident;
 
+    @Shadow
+    private ShieldEntityModel modelShield;
+
+    @Shadow
+    private final EntityModelLoader entityModelLoader;
+
+    public BuiltinModelItemRendererMixin(TridentEntityModel modelTrident, EntityModelLoader entityModelLoader) {
+        this.modelTrident = modelTrident;
+        this.entityModelLoader = entityModelLoader;
+    }
+
     @Inject(method= "render(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At("HEAD"), cancellable = true)
     public void render(ItemStack stack, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, CallbackInfo ci) {
         //TODO MAKE SURE TO UPDATE THIS AFTER CHECKING PREDICATE
+
         if(stack.isOf(Items.TRIDENT))
         {
-            TridentEntityModel model = (TridentEntityModel) ModelRegistryManager.GetModelFromIndex(EntityType.TRIDENT, 0);
-            if(model != null)
+            ModelsWithTexture modelsWithTexture = ModelRegistryManager.GetModelFromStack(EntityType.TRIDENT, stack);
+            if(modelsWithTexture != null)
             {
-                this.modelTrident = model;
+                this.modelTrident = (TridentEntityModel) modelsWithTexture.model;
+            }
+            else
+            {
+                this.modelTrident = new TridentEntityModel(this.entityModelLoader.getModelPart(EntityModelLayers.TRIDENT));
             }
         }
     }
@@ -45,12 +67,23 @@ public class BuiltinModelItemRendererMixin {
      */
     @Redirect(method="render", at = @At(value="INVOKE", target = "Lnet/minecraft/client/render/item/ItemRenderer;getDirectItemGlintConsumer(Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/client/render/RenderLayer;ZZ)Lnet/minecraft/client/render/VertexConsumer;"))
     private VertexConsumer GetConsumer(VertexConsumerProvider vertexConsumers, RenderLayer layer, boolean solid, boolean glint, ItemStack stack){
+        //TODO FIX THIS SO IF THE ITEM IS NOT A TRIDENT
         //TODO DO RESOURCE CHECK TO SEE IF VALID INDENTIFIER FOR TEXTURE
-        RenderLayer newLayer = this.modelTrident.getLayer(ModelRegistryManager.GetTextureFromIndex(EntityType.TRIDENT, 0));
-        if (newLayer != null)
+        if(stack.isOf(Items.TRIDENT))
         {
-            return ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, newLayer, false, stack.hasGlint());
+            ModelsWithTexture model = ModelRegistryManager.GetModelFromStack(EntityType.TRIDENT, stack);
+            if (model != null)
+            {
+                RenderLayer newLayer = this.modelTrident.getLayer(ModelRegistryManager.GetTextureFromIndex(EntityType.TRIDENT, 0));
+                return ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, newLayer, false, stack.hasGlint());
+            }
+        } else if(stack.isOf(Items.SHIELD))
+        {
+            boolean bl = BlockItem.getBlockEntityNbt(stack) != null;
+            SpriteIdentifier spriteIdentifier = bl ? ModelLoader.SHIELD_BASE : ModelLoader.SHIELD_BASE_NO_PATTERN;
+            return ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.modelShield.getLayer(spriteIdentifier.getAtlasId()), true, stack.hasGlint());
         }
+
         return ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.modelTrident.getLayer(TridentEntityModel.TEXTURE), false, glint);
     }
 }
