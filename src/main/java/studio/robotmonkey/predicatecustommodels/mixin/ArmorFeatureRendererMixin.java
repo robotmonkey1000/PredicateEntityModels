@@ -45,7 +45,6 @@ public class ArmorFeatureRendererMixin<T extends LivingEntity, M extends BipedEn
                 {
                     //Apply rotation of the parents head TODO this for all pieces based on slot.
 
-
                     switch(armorSlot){
                         case HEAD:
                             ((SimpleArmorModel)modelT.model).model.copyTransform(this.getContextModel().head);

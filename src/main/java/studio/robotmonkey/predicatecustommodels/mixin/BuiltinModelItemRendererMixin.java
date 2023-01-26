@@ -67,8 +67,8 @@ public class BuiltinModelItemRendererMixin {
      */
     @Redirect(method="render", at = @At(value="INVOKE", target = "Lnet/minecraft/client/render/item/ItemRenderer;getDirectItemGlintConsumer(Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/client/render/RenderLayer;ZZ)Lnet/minecraft/client/render/VertexConsumer;"))
     private VertexConsumer GetConsumer(VertexConsumerProvider vertexConsumers, RenderLayer layer, boolean solid, boolean glint, ItemStack stack){
-        //TODO FIX THIS SO IF THE ITEM IS NOT A TRIDENT
-        //TODO DO RESOURCE CHECK TO SEE IF VALID INDENTIFIER FOR TEXTURE
+
+        //TODO DO RESOURCE CHECK TO SEE IF VALID IDENTIFIER FOR TEXTURE, OTHERWISE WILL CRASH
         if(stack.isOf(Items.TRIDENT))
         {
             ModelsWithTexture model = ModelRegistryManager.GetModelFromStack(EntityType.TRIDENT, stack);

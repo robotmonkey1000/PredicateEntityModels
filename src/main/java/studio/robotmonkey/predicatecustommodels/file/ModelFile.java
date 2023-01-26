@@ -63,7 +63,6 @@ public class ModelFile {
         ModelPartBuilder builder = ModelPartBuilder.create();
         GatherChildenModels(textureModel.root, rootpart);
 
-        //TODO ADD TEXTURE SIZE AS PART OF THE MODEL INFORMATION
         ModelPart model = TexturedModelData.of(modelData, textureModel.texturesize[0], textureModel.texturesize[1]).createModel();
         texturedModelData.put(condition, new ModelsWithTexture(model, new Identifier("minecraft", "textures/" + textureModel.texture)));
         return model;
@@ -83,7 +82,7 @@ public class ModelFile {
             TextureModelDataLoader.CuboidUV UV = group.cuboids.get(i).UV;
             TextureModelDataLoader.CuboidOffset offset = group.cuboids.get(i).offset;
             TextureModelDataLoader.CuboidSize size = group.cuboids.get(i).size;
-            builder.uv(UV.X, UV.Y).cuboid(offset.offsetX, offset.offsetY, offset.offsetZ, size.sizeX, size.sizeY, size.sizeZ, new Dilation(0)); //TODO CONSIDER PIVOT AND ROTATION
+            builder.uv(UV.X, UV.Y).cuboid(offset.offsetX, offset.offsetY, offset.offsetZ, size.sizeX, size.sizeY, size.sizeZ, new Dilation(0)); //TODO CONSIDER ROTATION
 
         }
 
