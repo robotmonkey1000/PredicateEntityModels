@@ -14,7 +14,6 @@ import studio.robotmonkey.predicatecustommodels.file.ModelFile;
 import studio.robotmonkey.predicatecustommodels.util.Conditions.Condition;
 
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class ModelRegistryManager {
     //A map between the entity type and a list of custom models, make this so it contains predicates to get updated models
